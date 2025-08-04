@@ -1,0 +1,17 @@
+trigger: none
+
+pool: sahilpool
+
+steps:
+- task: TerraformInstaller@1
+  inputs:
+    terraformVersion: 'latest'
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/letsdoitagain'
+    backendServiceArm: 'Azure subscription 1(82b52cc0-bc5c-4cdf-9d91-fe8634df25e7)'
+    backendAzureRmStorageAccountName: 'sahilsa'
+    backendAzureRmContainerName: 'sahilcontainer'
+    backendAzureRmKey: 'sahil.tfstate'
